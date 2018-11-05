@@ -8,7 +8,7 @@ use Vetor\Contracts\Collect\Collection\Models\Collection as CollectionContract;
 use Vetor\Laravel\Collect\Collectable\Services\CollectableService;
 use Vetor\Contracts\Collect\Collectable\Services\CollectableService as CollectableServiceContract;
 
-class LoveServiceProvider extends ServiceProvider
+class CollectServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application events.

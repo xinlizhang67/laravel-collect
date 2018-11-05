@@ -27,6 +27,7 @@
   "extra": {
     "laravel": {
       "providers": [
+        "Vetor\\Laravel\\Collect\\Providers\\CollectServiceProvider"
       ]
     }
   }
