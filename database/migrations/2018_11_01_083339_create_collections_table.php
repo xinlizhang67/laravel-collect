@@ -18,6 +18,7 @@ class CreateCollectionsTable extends Migration
             $table->morphs('collectable');
             $table->integer('user_id')->unsigned()->index();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->unique([
                 'collectable_id',

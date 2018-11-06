@@ -3,10 +3,15 @@
 namespace Vetor\Laravel\Collect\Collection\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Vetor\Contracts\Collect\Collection\Models\Collection as CollectionContract;
+use Vetor\Contracts\Collect\Collectable\Models\Collectable as CollectableContract;
 
 class Collection extends Model implements CollectionContract
 {
+    use SoftDeletes;
+
     /**
      * @var string
      */
@@ -27,5 +32,15 @@ class Collection extends Model implements CollectionContract
     public function collectable()
     {
         return $this->morphTo();
+    }
+
+    /**
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param \Vetor\Contracts\Collect\Collectable\Models\Collectable $collectable
+     * @return mixed
+     */
+    public function scopeWhereCollectable(Builder $query, CollectableContract $collectable)
+    {
+        return $query->where('collectable_type', $collectable->getMorphClass());
     }
 }

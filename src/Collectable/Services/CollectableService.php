@@ -9,6 +9,11 @@ use Vetor\Contracts\Collect\Collectable\Services\CollectableService as Collectab
 
 class CollectableService implements CollectableServiceContract
 {
+    /**
+     * @param \Vetor\Contracts\Collect\Collectable\Models\Collectable $collectable
+     * @param $userId
+     * @return mixed|void
+     */
     public function addCollectionTo(CollectableContract $collectable, $userId)
     {
         $userId = $this->getCollectorUserId($userId);
@@ -24,6 +29,11 @@ class CollectableService implements CollectableServiceContract
         return;
     }
 
+    /**
+     * @param \Vetor\Contracts\Collect\Collectable\Models\Collectable $collectable
+     * @param $userId
+     * @return mixed|void
+     */
     public function removeCollectionFrom(CollectableContract $collectable, $userId)
     {
         $collection = $collectable->collections()->where('user_id', $this->getCollectorUserId($userId))->first();
@@ -33,6 +43,10 @@ class CollectableService implements CollectableServiceContract
         return;
     }
 
+    /**
+     * @param $userId
+     * @return mixed
+     */
     public function getCollectorUserId($userId)
     {
         if ($userId instanceof CollectorContract) {
@@ -50,6 +64,9 @@ class CollectableService implements CollectableServiceContract
         return $userId;
     }
 
+    /**
+     * @return mixed
+     */
     protected function currentUserId()
     {
         return auth()->id();

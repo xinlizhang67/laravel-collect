@@ -43,6 +43,6 @@ class CollectServiceProvider extends ServiceProvider
      */
     protected function registerMigrations()
     {
-        $this->loadMigrationsFrom(__DIR__ . '/path/to/migrations');
+        $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
     }
 }
